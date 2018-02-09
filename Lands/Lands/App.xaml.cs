@@ -1,22 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Xamarin.Forms;
-
+﻿
 namespace Lands
 {
-	public partial class App : Application
+    using Views;
+    using Xamarin.Forms;
+
+    public partial class App : Application
 	{
-		public App ()
+        #region Constructores
+        public App ()
 		{
 			InitializeComponent();
 
-			MainPage = new Lands.MainPage();
+			MainPage = new NavigationPage( new LoginPage());
 		}
-
-		protected override void OnStart ()
+        #endregion
+        #region Metodos
+        protected override void OnStart ()
 		{
 			// Handle when your app starts
 		}
@@ -30,5 +29,6 @@ namespace Lands
 		{
 			// Handle when your app resumes
 		}
-	}
+        #endregion
+    }
 }
