@@ -131,4 +131,13 @@
   <ItemGroup>
     <BundleResource Include="Resources\logoOnu.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\facebook.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\instagram.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\twitter.png" />
+  </ItemGroup>
 </Project>
