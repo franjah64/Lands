@@ -1,10 +1,7 @@
-﻿
-
-
-
-namespace Lands.ViewModels
+﻿namespace Lands.ViewModels
 {
     using GalaSoft.MvvmLight.Command;
+    using Lands.Views;
     using System.Windows.Input;
     using Xamarin.Forms;
 
@@ -16,13 +13,18 @@ namespace Lands.ViewModels
         // por convención el atributo privado inicia en minúscula el PÚBLICO con mayúscula
         // aquí se ponen las que se quieren cambiar
         private string password;
+        private string email;
         private bool isRunning;
         private bool isEnabled;
         #endregion
 
         #region Propiedades
         // aquí debe existir una propiedad por cada campo en XAML que este con Binding
-        public string Email { get; set; }
+        public string Email
+        {
+            get { return this.email; }
+            set { SetValue(ref this.email, value); }
+        }
 
         public string Password { 
             get { return this.password;  }
@@ -91,12 +93,12 @@ namespace Lands.ViewModels
             this.IsRunning = false;
             // para que se habiliten los botones
             this.IsEnabled = true;
-            await Application.Current.MainPage.DisplayAlert(
-                   "OK",
-                   "todo bien",
-                   "Aceptar");
-            return;
 
+            this.Email = string.Empty;
+            this.Password = string.Empty;
+
+            MainViewModel.GetInstance().Lands = new LandsViewModel();
+            await Application.Current.MainPage.Navigation.PushAsync(new LandsPage());
         }
 
         #endregion
@@ -107,6 +109,10 @@ namespace Lands.ViewModels
             this.IsRemembered = true;
             this.IsRunning = false;  // no es necesario, por default es false
             this.IsEnabled = true;  // botones habilitados cuando inicia
+
+            this.Email = "hola@hola.com";
+            this.Password = "1234";
+
         }
         #endregion
     }
